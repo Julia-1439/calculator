@@ -17,9 +17,8 @@ function divide(p, q) {
     return p / q;
 }
 
-/* (Step 2) Variables to store operation info */
-let opA, opB, operator;
-
+/* Global variables to store operation info */
+let operandA, operandB, operator, displayNum;
 
 /* (Step 3) */
 function operate(operandA, operandB, operator) {
