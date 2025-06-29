@@ -77,10 +77,25 @@ operatorButtons.forEach((button) => {
 
 function setOperator(op) {
     operator = op;
-    console.log("Set to " + op)
 }
+
+/* Functionality for equals sign */
+const equalsButton = document.querySelector("#equals"); 
+equalsButton.addEventListener("click", (e) => {
+    if (displayContent.length > 0 && operandA !== undefined && operator !== undefined) {
+        operandB = +displayContent;
+        const result = operate(operandA, operandB, operator);
+        setDisplay(result);
+    }
+});
 
 function clearDisplay() {
     display.textContent = "";
     displayContent = "";
+}
+
+function setDisplay(content) {
+    content = String(content);
+    display.textContent = content;
+    displayContent = content;
 }
