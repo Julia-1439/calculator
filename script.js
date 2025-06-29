@@ -49,3 +49,27 @@ digitButtons.forEach((button) => {
         display.textContent = displayContent;
     }); 
 });
+
+/**
+ * Operator requirements:
+ * (1) change the `operator` global variable
+ * (2) if the Display is empty, don't do anything else. 
+ * (2) if the Display is in Results mode, don't do anything else. 
+ * (3) else if Display is not in Results mode (and nonempty):
+ *      if A is empty ??gjiourghnriuj
+ *      
+ * (4) else (Display contains an error message)
+ */
+const operatorButtons = document.querySelectorAll(".operator");
+operatorButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+        const op = e.target.id; 
+        setOperator(op);
+
+    });
+});
+
+function setOperator(op) {
+    operator = op;
+    console.log("Set to " + op)
+}
