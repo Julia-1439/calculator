@@ -66,6 +66,12 @@ operatorButtons.forEach((button) => {
         const op = e.target.id; 
         setOperator(op);
 
+        if (displayContent.length > 0) {
+            if (operandA === undefined) {
+                operandA = +displayContent;
+                clearDisplay();
+            }
+        }
     });
 });
 
