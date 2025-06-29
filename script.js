@@ -19,3 +19,18 @@ function divide(p, q) {
 
 /* (Step 2) Variables to store operation info */
 let opA, opB, operator;
+
+
+/* (Step 3) */
+function operate(operandA, operandB, operator) {
+    switch (operator) {
+        case "add": 
+            return add(operandA, operandB);
+        case "subtract": 
+            return subtract(operandA, operandB);
+        case "multiply": 
+            return multiply(operandA, operandB);
+        case "divide": 
+            return divide(operandA, operandB);
+    }
+}
