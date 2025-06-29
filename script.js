@@ -73,3 +73,8 @@ function setOperator(op) {
     operator = op;
     console.log("Set to " + op)
 }
+
+function clearDisplay() {
+    display.textContent = "";
+    displayContent = "";
+}
