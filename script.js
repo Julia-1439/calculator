@@ -19,7 +19,7 @@ function divide(p, q) {
 
 /* Global variables to store operation info */
 let operandA, operandB, operator;
-let displayNum = "";
+let displayContent = "";
 
 /* (Step 3) */
 function operate(operandA, operandB, operator) {
@@ -35,13 +35,13 @@ function operate(operandA, operandB, operator) {
     }
 }
 
-/* Pressing digits should populate display and set displayNum */
+/* Pressing digits should populate display and set displayContent */
 const display = document.querySelector("#display");
 
 const digitButtons = document.querySelectorAll(".digit");
 digitButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        displayNum += e.target.textContent;
-        display.textContent = displayNum;
+        displayContent += e.target.textContent;
+        display.textContent = displayContent;
     });
 });
