@@ -16,3 +16,6 @@ function divide(p, q) {
     if (q === 0) return null;
     return p / q;
 }
+
+/* (Step 2) Variables to store operation info */
+let opA, opB, operator;
