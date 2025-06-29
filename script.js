@@ -33,6 +33,8 @@ function operate(a, b, op) {
 /* Global variables to store operation info */
 let operandA, operandB, operator;
 let displayContent = "";
+let resultMode = false;
+
 const ADD  = "add";
 const SUB  = "subtract";
 const MULT = "multiply";
@@ -44,9 +46,13 @@ const display = document.querySelector("#display");
 const digitButtons = document.querySelectorAll(".digit");
 digitButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        displayContent += e.target.textContent;
-        displayContent = String(+displayContent); // Handles entering 0 first
-        display.textContent = displayContent;
+        const digit = e.target.textContent;
+        const newDisplayContent = (!resultMode)
+            ? +`${displayContent}${digit}`
+            : digit;
+
+        setDisplay(newDisplayContent);
+        resultMode = false;
     }); 
 });
 
@@ -85,7 +91,10 @@ equalsButton.addEventListener("click", (e) => {
     if (displayContent.length > 0 && operandA !== undefined && operator !== undefined) {
         operandB = +displayContent;
         const result = operate(operandA, operandB, operator);
-        setDisplay(result);
+        setDisplay(result); 
+        
+        resultMode = true;
+        operandA = operandB = operator = undefined;
     }
 });
 
