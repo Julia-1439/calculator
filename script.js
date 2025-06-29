@@ -17,22 +17,26 @@ function divide(p, q) {
     return p / q;
 }
 
-function operate(operandA, operandB, operator) {
-    switch (operator) {
-        case "add": 
-            return add(operandA, operandB);
-        case "subtract": 
-            return subtract(operandA, operandB);
-        case "multiply": 
-            return multiply(operandA, operandB);
-        case "divide": 
-            return divide(operandA, operandB);
+function operate(a, b, op) {
+    switch (op) {
+        case ADD: 
+            return add(a, b);
+        case SUB: 
+            return subtract(a, b);
+        case MULT: 
+            return multiply(a, b);
+        case DIV: 
+            return divide(a, b);
     }
 }
 
 /* Global variables to store operation info */
 let operandA, operandB, operator;
 let displayContent = "";
+const ADD  = "add";
+const SUB  = "subtract";
+const MULT = "multiply";
+const DIV  = "divide";
 
 /* Pressing digits should populate display and set displayContent */
 const display = document.querySelector("#display");
