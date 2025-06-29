@@ -17,11 +17,6 @@ function divide(p, q) {
     return p / q;
 }
 
-/* Global variables to store operation info */
-let operandA, operandB, operator;
-let displayContent = "";
-
-/* (Step 3) */
 function operate(operandA, operandB, operator) {
     switch (operator) {
         case "add": 
@@ -35,6 +30,10 @@ function operate(operandA, operandB, operator) {
     }
 }
 
+/* Global variables to store operation info */
+let operandA, operandB, operator;
+let displayContent = "";
+
 /* Pressing digits should populate display and set displayContent */
 const display = document.querySelector("#display");
 
@@ -44,5 +43,5 @@ digitButtons.forEach((button) => {
         displayContent += e.target.textContent;
         displayContent = +displayContent; // Handles entering 0 first
         display.textContent = displayContent;
-    });
+    }); 
 });
