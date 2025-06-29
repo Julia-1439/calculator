@@ -18,7 +18,8 @@ function divide(p, q) {
 }
 
 /* Global variables to store operation info */
-let operandA, operandB, operator, displayNum;
+let operandA, operandB, operator;
+let displayNum = "";
 
 /* (Step 3) */
 function operate(operandA, operandB, operator) {
@@ -33,3 +34,14 @@ function operate(operandA, operandB, operator) {
             return divide(operandA, operandB);
     }
 }
+
+/* Pressing digits should populate display and set displayNum */
+const display = document.querySelector("#display");
+
+const digitButtons = document.querySelectorAll(".digit");
+digitButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+        displayNum += e.target.textContent;
+        display.textContent = displayNum;
+    });
+});
