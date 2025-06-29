@@ -42,6 +42,7 @@ const digitButtons = document.querySelectorAll(".digit");
 digitButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
         displayContent += e.target.textContent;
+        displayContent = +displayContent; // Handles entering 0 first
         display.textContent = displayContent;
     });
 });
