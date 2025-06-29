@@ -19,7 +19,7 @@ function divide(p, q) {
 
 /* (Step 2) Variables to store operation info */
 let opA, opB, operator;
-
+let displayNumber;
 
 /* (Step 3) */
 function operate(operandA, operandB, operator) {
