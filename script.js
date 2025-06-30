@@ -75,6 +75,7 @@ operatorButtons.forEach((button) => {
             if (operandA === undefined) {
                 operandA = +displayContent;
                 clearDisplay();
+                resultMode = false;
             }
         }
     });
