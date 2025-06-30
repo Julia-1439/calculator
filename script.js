@@ -69,9 +69,9 @@ digitButtons.forEach((button) => {
 const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        const op = e.target.id; 
-        if (displayContent.length > 0) {
-            setOperator(op);
+        if (displayContent.length > 0 || operandA !== undefined) {
+            const op = e.target.id; 
+            setOperator(op); 
             if (operandA === undefined) {
                 operandA = +displayContent;
                 clearDisplay();
