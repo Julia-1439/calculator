@@ -69,14 +69,25 @@ digitButtons.forEach((button) => {
 const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        if (displayContent.length > 0 || operandA !== undefined) {
+        // This case allows free switching of operator after a first number is 
+        // in memory but while display is empty.  
+        if (operandA !== undefined) {
             const op = e.target.id; 
-            setOperator(op); 
-            if (operandA === undefined) {
-                operandA = +displayContent;
-                clearDisplay();
-                resultMode = false;
-            }
+            setOperator(op);
+        }
+
+        // This case puts the display into operandA and clears the display to
+        // ready for operandB to be entered. 
+        else if (displayContent.length > 0) {
+            const op = e.target.id; 
+            setOperator(op);
+            
+            operandA = +displayContent;
+            clearDisplay();
+            
+            // To handle the case of being on a result screen and using its 
+            // contents as operandA in a running calculation
+            resultMode = false;
         }
     });
 });
