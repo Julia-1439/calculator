@@ -69,26 +69,41 @@ digitButtons.forEach((button) => {
 const operatorButtons = document.querySelectorAll(".operator");
 operatorButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        // This case allows free switching of operator after a first number is 
-        // in memory but while display is empty.  
-        if (operandA !== undefined) {
-            const op = e.target.id; 
-            setOperator(op);
-        }
+        const newOperator = e.target.id; // not used in case 3 :/
+        if (displayContent.length > 0) {
+            // Case (1) Set operator after first number entered or on result screen of =
+            if (operandA === undefined) {
+                operandA = +displayContent; 
+                setOperator(newOperator);
+                clearDisplay();
+            }
+            // Case (2) User starts a running calculation after second number
+            // is in the display
+            else {
+                operandB = +displayContent;
+                const oldOperator = operator;
+                const result = operate(operandA, operandB, oldOperator);
+                
+                operandA = result;
+                setDisplay(result); 
+                resultMode = true;
 
-        // This case puts the display into operandA and clears the display to
-        // ready for operandB to be entered. 
-        else if (displayContent.length > 0) {
-            const op = e.target.id; 
-            setOperator(op);
-            
-            operandA = +displayContent;
-            clearDisplay();
-            
-            // To handle the case of being on a result screen and using its 
-            // contents as operandA in a running calculation
-            resultMode = false;
+                setOperator(newOperator);
+                operandB = undefined;
+            }
         }
+        else {
+            // Case (3) Initial state - do nothing
+            if (operandA === undefined) {
+                return;
+            }
+            // Case (4) Freely switch operator before a second number is entered
+            // into the display
+            else {
+                setOperator(newOperator);
+            }
+        }
+        
     });
 });
 
