@@ -30,6 +30,15 @@ function operate(a, b, operator) {
     }
 }
 
+function clearAll() {
+    operandA = operandB = operator = undefined;
+    
+    display.textContent = "";
+    displayContent = "";
+    
+    resultMode = false;
+}
+
 /* Global variables to store operation info */
 let operandA, operandB, operator;
 let displayContent = "";
@@ -39,6 +48,10 @@ const ADD  = "add";
 const SUB  = "subtract";
 const MULT = "multiply";
 const DIV  = "divide";
+
+/* Clear button */
+const clearButton = document.querySelector("#clear-all");
+clearButton.addEventListener("click", clearAll);
 
 /* Pressing digits should populate display and set displayContent */
 const display = document.querySelector("#display");
