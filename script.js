@@ -44,106 +44,90 @@ let operandA, operandB, operator;
 let displayContent = "";
 let resultMode = false;
 
+// For operator values
 const ADD  = "add";
 const SUB  = "subtract";
 const MULT = "multiply";
 const DIV  = "divide";
 
-/* Clear button */
+/* Global variables for DOM elements */
+const digitButtons = document.querySelectorAll(".digit");
+const operatorButtons = document.querySelectorAll(".operator");
+const equalsButton = document.querySelector("#equals"); 
+
+const display = document.querySelector("#display");
 const clearButton = document.querySelector("#clear-all");
+
+/*  */
 clearButton.addEventListener("click", clearAll);
 
-/* Pressing digits should populate display and set displayContent */
-const display = document.querySelector("#display");
-
-const digitButtons = document.querySelectorAll(".digit");
+/*  */
 digitButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        const digit = e.target.textContent;
-        const newDisplayContent = (!resultMode)
-            ? +`${displayContent}${digit}`
-            : digit;
-
-        setDisplay(newDisplayContent);
+        const digit = +e.target.textContent;
+        const updatedNumber = (!resultMode)
+            ? +`${displayContent}${digit}` // the + here handles the 0-first case
+            : digit; 
+        
         resultMode = false;
+        updateOperands(updatedNumber);
+        setDisplay(String(updatedNumber));
     }); 
 });
 
-/**
- * Operator requirements:
- * (1) change the `operator` global variable
- * (2) if the Display is empty, don't do anything else. 
- * (2) if the Display is in Results mode, don't do anything else. 
- * (3) else if Display is not in Results mode (and nonempty):
- *      if A is empty ??gjiourghnriuj
- *      
- * (4) else (Display contains an error message)
- */
-const operatorButtons = document.querySelectorAll(".operator");
+//
+function updateOperands(updatedNumber) {
+    if (operator === undefined) {
+        operandA = updatedNumber;
+    }
+    else {
+        operandB = updatedNumber
+    }
+}
+
+// 
+function setDisplay(content) {
+    displayContent = content;
+    display.textContent = content;
+}
+
+
+
 operatorButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        const newOperator = e.target.id; // not used in case 3 :/
-        if (displayContent.length > 0) {
-            // Case (1) Set operator after first number entered or on result screen of =
-            if (operandA === undefined) {
-                operandA = +displayContent; 
-                setOperator(newOperator);
-                clearDisplay();
-            }
-            // Case (2) User starts a running calculation after second number
-            // is in the display
-            else {
-                operandB = +displayContent;
-                const oldOperator = operator;
-                const result = operate(operandA, operandB, oldOperator);
-                
-                operandA = result;
-                setDisplay(result); 
-                resultMode = true;
+        const newOperator = e.target.id; 
 
-                setOperator(newOperator);
-                operandB = undefined;
+        if (operandA !== undefined) {
+            if (operandB === undefined) {
+                operator = newOperator;
+                setDisplay("");
+            }
+            else {
+                // running calculation
             }
         }
         else {
-            // Case (3) Initial state - do nothing
-            if (operandA === undefined) {
-                return;
-            }
-            // Case (4) Freely switch operator before a second number is entered
-            // into the display
-            else {
-                setOperator(newOperator);
-            }
+            // tbd
         }
         
     });
 });
 
-function setOperator(op) {
-    operator = op;
-}
-
-/* Functionality for equals sign */
-const equalsButton = document.querySelector("#equals"); 
 equalsButton.addEventListener("click", (e) => {
-    if (displayContent.length > 0 && operandA !== undefined && operator !== undefined) {
-        operandB = +displayContent;
-        const result = operate(operandA, operandB, operator);
-        setDisplay(result); 
+    const result = operate(operandA, operandB, operator);
+    setDisplay(result);
+    resultMode = true;
+    
+    operandA = operandB = operator = undefined;
+
+    // if (displayContent.length > 0 && operandA !== undefined && operator !== undefined) {
+    //     operandB = +displayContent;
+    //     const result = operate(operandA, operandB, operator);
+    //     setDisplay(result); 
         
-        resultMode = true;
-        operandA = operandB = operator = undefined;
-    }
+    //     resultMode = true;
+    //     operandA = operandB = operator = undefined;
+    // }
 });
 
-function clearDisplay() {
-    display.textContent = "";
-    displayContent = "";
-}
 
-function setDisplay(content) {
-    content = String(content);
-    display.textContent = content;
-    displayContent = content;
-}
