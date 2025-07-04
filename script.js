@@ -19,23 +19,20 @@ function divide(p, q) {
 
 function operate(a, b, operator) {
     switch (operator) {
-        case ADD: 
+        case "add": 
             return add(a, b);
-        case SUB: 
+        case "subtract": 
             return subtract(a, b);
-        case MULT: 
+        case "multiply": 
             return multiply(a, b);
-        case DIV: 
+        case "divide": 
             return divide(a, b);
     }
 }
 
 function clearAll() {
     operandA = operandB = operator = undefined;
-    
-    display.textContent = "";
-    displayContent = "";
-    
+    setDisplay("");
     resultMode = false;
 }
 
@@ -43,12 +40,6 @@ function clearAll() {
 let operandA, operandB, operator;
 let displayContent = "";
 let resultMode = false;
-
-// For operator values
-const ADD  = "add";
-const SUB  = "subtract";
-const MULT = "multiply";
-const DIV  = "divide";
 
 /* Global variables for DOM elements */
 const digitButtons = document.querySelectorAll(".digit");
