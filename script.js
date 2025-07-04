@@ -17,8 +17,8 @@ function divide(p, q) {
     return p / q;
 }
 
-function operate(a, b, op) {
-    switch (op) {
+function operate(a, b, operator) {
+    switch (operator) {
         case ADD: 
             return add(a, b);
         case SUB: 
