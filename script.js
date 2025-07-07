@@ -58,9 +58,9 @@ digitButtons.forEach((button) => {
         // The + here handles the 0-first case
         const updatedNumber = +`${getCurrOperand() ?? ""}${digit}` 
         
-        resultMode = false;
         setCurrOperand(updatedNumber);
         setDisplay(String(updatedNumber));
+        resultMode = false;
     }); 
 });
 
@@ -118,7 +118,7 @@ operatorButtons.forEach((button) => {
             if (operandB === undefined) {
                 // Either initial state or outcome of an Equals Calculation
                 
-                // Outcome of an Equals Calculation
+                // Handoff Calculation
                 if (resultMode) {
                     operandA = +displayContent; // TODO: handle div-0 case
                     operator = pressedOperator;
