@@ -60,7 +60,7 @@ digitButtons.forEach((button) => {
             : digit;  // won't be needed if we do nullish
         
         resultMode = false;
-        updateCurrOperand(updatedNumber);
+        setCurrOperand(updatedNumber);
         setDisplay(String(updatedNumber));
     }); 
 });
@@ -78,7 +78,7 @@ function getCurrOperand() {
 
 
 //
-function updateCurrOperand(newNumber) {
+function setCurrOperand(newNumber) {
     if (operator === undefined) {
         operandA = newNumber;
     }
