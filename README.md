@@ -2,7 +2,9 @@
 
 ## Definitions
 The following are terms we use in our commits and comments (starting in 
-commit afb25e1). The `*` indicate an arbitrary operator. 
+commit afb25e1). Each `*` indicates an arbitrary operator. 
 <li> Equals Calculation: a user input sequence of the form A * B =</li>
 <li> Running Calculation: a user input sequence of the form A * B * </li>
 <li> Handoff Calculation: a user input sequence of the form A * B = * </li>
+<li> Current Operand: either `operandA` or `operandB`; the operand to be updated
+when the user presses a digit. </li>
