@@ -45,9 +45,8 @@ let resultMode = false;
 const digitButtons = document.querySelectorAll(".digit");
 const operatorButtons = document.querySelectorAll(".operator");
 const equalsButton = document.querySelector("#equals"); 
-
-const display = document.querySelector("#display");
 const clearButton = document.querySelector("#clear-all");
+const display = document.querySelector("#display");
 
 /*  */
 clearButton.addEventListener("click", clearAll);
@@ -61,36 +60,35 @@ digitButtons.forEach((button) => {
             : digit; 
         
         resultMode = false;
-        updateOperands(updatedNumber);
+        updateCurrOperand(updatedNumber);
         setDisplay(String(updatedNumber));
     }); 
 });
 
 //
-function updateOperands(updatedNumber) {
+function updateCurrOperand(newNumber) {
     if (operator === undefined) {
-        operandA = updatedNumber;
+        operandA = newNumber;
     }
     else {
-        operandB = updatedNumber
+        operandB = newNumber;
     }
 }
 
 // 
-function setDisplay(content) {
-    displayContent = content;
-    display.textContent = content;
+function setDisplay(newContent) {
+    displayContent = newContent;
+    display.textContent = newContent;
 }
-
-
 
 operatorButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        const newOperator = e.target.id; 
+        const pressedOperator = e.target.id; 
 
         if (operandA !== undefined) {
             if (operandB === undefined) {
-                operator = newOperator;
+                // Equals Calculation. Also handles switching operator
+                operator = pressedOperator;
                 setDisplay("");
             }
             else {
