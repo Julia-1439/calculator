@@ -100,7 +100,6 @@ operatorButtons.forEach((button) => {
             if (operandB === undefined) {
                 // Equals Calculation. Also handles switching operator
                 operator = pressedOperator;
-                setDisplay("");
             }
             else {
                 // Running Calculation. 
@@ -122,7 +121,6 @@ operatorButtons.forEach((button) => {
                 if (resultMode) {
                     operandA = +displayContent; // TODO: handle div-0 case
                     operator = pressedOperator;
-                    setDisplay("");
                     resultMode = false;
                 }
             }
