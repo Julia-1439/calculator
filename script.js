@@ -135,6 +135,15 @@ operatorButtons.forEach((button) => {
 });
 
 equalsButton.addEventListener("click", (e) => {
+
+    // Equals button should only do something if both operands & the operator
+    // are defined
+    if (!(operandA !== undefined 
+        && operandB !== undefined 
+        && operator !== undefined)) {
+        return;
+    }
+
     const result = operate(operandA, operandB, operator);
     setDisplay(result);
     resultMode = true;
