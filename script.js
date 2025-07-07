@@ -104,7 +104,15 @@ operatorButtons.forEach((button) => {
                 setDisplay("");
             }
             else {
-                // running calculation
+                // Running Calculation. 
+                const prevOperator = operator;
+
+                const intermediateResult = operate(operandA, operandB, prevOperator);
+                setDisplay(intermediateResult);
+
+                operandA = intermediateResult;
+                operandB = undefined; 
+                operator = pressedOperator; 
             }
         }
         else {
