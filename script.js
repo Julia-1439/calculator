@@ -96,7 +96,20 @@ operatorButtons.forEach((button) => {
             }
         }
         else {
-            // tbd
+            if (operandB === undefined) {
+                // Either initial state or outcome of an Equals Calculation
+                
+                // Outcome of an Equals Calculation
+                if (resultMode) {
+                    operandA = +displayContent; // TODO: handle div-0 case
+                    operator = pressedOperator;
+                    setDisplay("");
+                    resultMode = false;
+                }
+            }
+            else {
+                // Impossible (maybe)
+            }
         }
         
     });
