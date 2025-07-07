@@ -59,7 +59,7 @@ digitButtons.forEach((button) => {
         const updatedNumber = +`${getCurrOperand() ?? ""}${digit}` 
         
         setCurrOperand(updatedNumber);
-        setDisplay(String(updatedNumber));
+        setDisplay(updatedNumber);
         resultMode = false;
     }); 
 });
