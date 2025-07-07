@@ -55,9 +55,8 @@ clearButton.addEventListener("click", clearAll);
 digitButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
         const digit = +e.target.textContent;
-        const updatedNumber = (!resultMode)
-            ? +`${getCurrOperand() ?? ""}${digit}` // the + here handles the 0-first case
-            : digit;  // won't be needed if we do nullish
+        // The + here handles the 0-first case
+        const updatedNumber = +`${getCurrOperand() ?? ""}${digit}` 
         
         resultMode = false;
         setCurrOperand(updatedNumber);
