@@ -56,14 +56,26 @@ digitButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
         const digit = +e.target.textContent;
         const updatedNumber = (!resultMode)
-            ? +`${displayContent}${digit}` // the + here handles the 0-first case
-            : digit; 
+            ? +`${getCurrOperand() ?? ""}${digit}` // the + here handles the 0-first case
+            : digit;  // won't be needed if we do nullish
         
         resultMode = false;
         updateCurrOperand(updatedNumber);
         setDisplay(String(updatedNumber));
     }); 
 });
+
+
+// 
+function getCurrOperand() {
+    if (operator === undefined) {
+        return operandA;
+    }
+    else {
+        return operandB;
+    }
+}
+
 
 //
 function updateCurrOperand(newNumber) {
