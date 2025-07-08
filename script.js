@@ -38,8 +38,16 @@ function operate(a, b, operator) {
     if (result === ERR_MSG_DIV0){
         return result; 
     }
-
-    result = +result.toFixed(DECIMALS_LIMIT); // The + trims trailing 0s
+    else if (result.toString().includes("e+")) {
+        result = +result.toPrecision(DECIMALS_LIMIT + 1); 
+        // The + trims trailing 0s
+        // +1 is added to DECIMALS_LIMIT since toPrecision() accepts # of 
+        // significant figures rather than decimal places like toFixed()
+    }
+    else {
+        result = +result.toFixed(DECIMALS_LIMIT); // The + trims trailing 0s
+    }
+    
     return result;
 }
 
