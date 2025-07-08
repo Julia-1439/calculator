@@ -1,67 +1,3 @@
-/* The four basic math functions */
-
-function add(a, b) {
-    return a + b;
-}
-
-function subtract(a, b) {
-    return a - b;
-}
-
-function multiply(p, q) {
-    return p * q;
-}
-
-function divide(p, q) {
-    if (q === 0) return ERR_MSG_DIV0;
-    return p / q;
-}
-
-function operate(a, b, operator) {
-    let result;
-    
-    switch (operator) {
-        case "add": 
-            result = add(a, b);
-            break;
-        case "subtract": 
-            result = subtract(a, b);
-            break;
-        case "multiply": 
-            result = multiply(a, b);
-            break;
-        case "divide": 
-            result = divide(a, b);
-            break;
-    }
-    
-    if (result === ERR_MSG_DIV0){
-        return result; 
-    }
-    else if (result.toString().includes("e+")) {
-        result = +result.toPrecision(DECIMALS_LIMIT + 1); 
-        // The + trims trailing 0s
-        // +1 is added to DECIMALS_LIMIT since toPrecision() accepts # of 
-        // significant figures rather than decimal places like toFixed()
-    }
-    else {
-        result = +result.toFixed(DECIMALS_LIMIT); // The + trims trailing 0s
-    }
-    
-    return result;
-}
-
-function clearAll() {
-    operandA = operandB = operator = undefined;
-    setDisplay("");
-    resultMode = false;
-}
-
-function handleDiv0Error() {
-    clearAll();
-    setDisplay(ERR_MSG_DIV0);
-}
-
 /* Global variables to store operation info */
 let operandA, operandB, operator;
 let displayContent = "";
@@ -69,17 +5,16 @@ let resultMode = false;
 const ERR_MSG_DIV0 = "ERROR-DIV-0";
 const DECIMALS_LIMIT = 3;
 
-/* Global variables for DOM elements */
+/* Global variables for DOM elements to add event listeners to */
 const digitButtons = document.querySelectorAll(".digit");
 const operatorButtons = document.querySelectorAll(".operator");
 const equalsButton = document.querySelector("#equals"); 
 const clearButton = document.querySelector("#clear-all");
 const display = document.querySelector("#display");
 
-/*  */
+/* Add event listeners to buttons and page */
 clearButton.addEventListener("click", clearAll);
 
-/*  */
 digitButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
         const digit = +e.target.textContent;
@@ -91,29 +26,6 @@ digitButtons.forEach((button) => {
         resultMode = false;
     }); 
 });
-
-
-// 
-function getCurrOperand() {
-    return (operator === undefined) ? operandA : operandB; 
-}
-
-
-//
-function setCurrOperand(newNumber) {
-    if (operator === undefined) {
-        operandA = newNumber;
-    }
-    else {
-        operandB = newNumber;
-    }
-}
-
-// 
-function setDisplay(newContent) {
-    displayContent = newContent;
-    display.textContent = newContent;
-}
 
 operatorButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
@@ -179,4 +91,87 @@ equalsButton.addEventListener("click", (e) => {
     operandA = operandB = operator = undefined;
 });
 
+/* Functions called directly by event handlers */
+
+function clearAll() {
+    operandA = operandB = operator = undefined;
+    setDisplay("");
+    resultMode = false;
+}
+
+/* Helper functions */
+
+function setDisplay(newContent) {
+    displayContent = newContent;
+    display.textContent = newContent;
+}
+
+function getCurrOperand() {
+    return (operator === undefined) ? operandA : operandB; 
+}
+
+function setCurrOperand(newNumber) {
+    if (operator === undefined) {
+        operandA = newNumber;
+    }
+    else {
+        operandB = newNumber;
+    }
+}
+
+function add(a, b) {
+    return a + b;
+}
+
+function subtract(a, b) {
+    return a - b;
+}
+
+function multiply(p, q) {
+    return p * q;
+}
+
+function divide(p, q) {
+    if (q === 0) return ERR_MSG_DIV0;
+    return p / q;
+}
+
+function operate(a, b, operator) {
+    let result;
+    
+    switch (operator) {
+        case "add": 
+            result = add(a, b);
+            break;
+        case "subtract": 
+            result = subtract(a, b);
+            break;
+        case "multiply": 
+            result = multiply(a, b);
+            break;
+        case "divide": 
+            result = divide(a, b);
+            break;
+    }
+    
+    if (result === ERR_MSG_DIV0){
+        return result; 
+    }
+    else if (result.toString().includes("e+")) {
+        result = +result.toPrecision(DECIMALS_LIMIT + 1); 
+        // The + trims trailing 0s
+        // +1 is added to DECIMALS_LIMIT since toPrecision() accepts # of 
+        // significant figures rather than decimal places like toFixed()
+    }
+    else {
+        result = +result.toFixed(DECIMALS_LIMIT); // The + trims trailing 0s
+    }
+    
+    return result;
+}
+
+function handleDiv0Error() {
+    clearAll();
+    setDisplay(ERR_MSG_DIV0);
+}
 
