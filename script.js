@@ -18,16 +18,29 @@ function divide(p, q) {
 }
 
 function operate(a, b, operator) {
+    let result;
+    
     switch (operator) {
         case "add": 
-            return add(a, b);
+            result = add(a, b);
+            break;
         case "subtract": 
-            return subtract(a, b);
+            result = subtract(a, b);
+            break;
         case "multiply": 
-            return multiply(a, b);
+            result = multiply(a, b);
+            break;
         case "divide": 
-            return divide(a, b);
+            result = divide(a, b);
+            break;
     }
+    
+    if (result === ERR_MSG_DIV0){
+        return result; 
+    }
+
+    result = +result.toFixed(DECIMALS_LIMIT); // The + trims trailing 0s
+    return result;
 }
 
 function clearAll() {
@@ -46,6 +59,7 @@ let operandA, operandB, operator;
 let displayContent = "";
 let resultMode = false;
 const ERR_MSG_DIV0 = "ERROR-DIV-0";
+const DECIMALS_LIMIT = 3;
 
 /* Global variables for DOM elements */
 const digitButtons = document.querySelectorAll(".digit");
