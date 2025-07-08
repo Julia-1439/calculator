@@ -110,7 +110,7 @@ operatorButtons.forEach((button) => {
         }
         else {
             if (operandB === undefined) {
-                // Either initial state or outcome of an Equals Calculation
+                // Either initial state or a Handoff Calculation
                 
                 // Handoff Calculation
                 if (resultMode) {
@@ -142,15 +142,6 @@ equalsButton.addEventListener("click", (e) => {
     resultMode = true;
     
     operandA = operandB = operator = undefined;
-
-    // if (displayContent.length > 0 && operandA !== undefined && operator !== undefined) {
-    //     operandB = +displayContent;
-    //     const result = operate(operandA, operandB, operator);
-    //     setDisplay(result); 
-        
-    //     resultMode = true;
-    //     operandA = operandB = operator = undefined;
-    // }
 });
 
 
