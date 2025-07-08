@@ -67,12 +67,7 @@ digitButtons.forEach((button) => {
 
 // 
 function getCurrOperand() {
-    if (operator === undefined) {
-        return operandA;
-    }
-    else {
-        return operandB;
-    }
+    return (operator === undefined) ? operandA : operandB; 
 }
 
 
