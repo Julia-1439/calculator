@@ -13,7 +13,7 @@ function multiply(p, q) {
 }
 
 function divide(p, q) {
-    if (q === 0) return null;
+    if (q === 0) return ERR_MSG_DIV0;
     return p / q;
 }
 
@@ -36,10 +36,16 @@ function clearAll() {
     resultMode = false;
 }
 
+function handleDiv0Error() {
+    clearAll();
+    setDisplay(ERR_MSG_DIV0);
+}
+
 /* Global variables to store operation info */
 let operandA, operandB, operator;
 let displayContent = "";
 let resultMode = false;
+const ERR_MSG_DIV0 = "ERROR-DIV-0";
 
 /* Global variables for DOM elements */
 const digitButtons = document.querySelectorAll(".digit");
@@ -101,6 +107,10 @@ operatorButtons.forEach((button) => {
                 const prevOperator = operator;
 
                 const intermediateResult = operate(operandA, operandB, prevOperator);
+                if (intermediateResult === ERR_MSG_DIV0) {
+                    handleDiv0Error();
+                    return;
+                }
                 setDisplay(intermediateResult);
 
                 operandA = intermediateResult;
@@ -114,7 +124,7 @@ operatorButtons.forEach((button) => {
                 
                 // Handoff Calculation
                 if (resultMode) {
-                    operandA = +displayContent; // TODO: handle div-0 case
+                    operandA = displayContent; 
                     operator = pressedOperator;
                     resultMode = false;
                 }
@@ -138,9 +148,12 @@ equalsButton.addEventListener("click", (e) => {
     }
 
     const result = operate(operandA, operandB, operator);
+    if (result === ERR_MSG_DIV0) {
+        handleDiv0Error();
+        return;
+    }
     setDisplay(result);
-    resultMode = true;
-    
+    resultMode = true;    
     operandA = operandB = operator = undefined;
 });
 
