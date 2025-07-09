@@ -9,6 +9,7 @@ body {
     height: 582px;
     border: black solid 1px;
     padding: 12px;
+    border-radius: 25px;
 
     display: flex;
     flex-wrap: wrap;
@@ -21,6 +22,7 @@ body {
     height: 87px;
     border: black solid 1px;
     padding: 6px;
+    border-radius: 25px;
 
     display: flex;
     justify-content: right;
@@ -41,6 +43,8 @@ body {
     width: 87px;
     height: 87px;
     font-family: inherit;
+
+    border-radius: 50%;
 }
 
 .wide-calc-button {
@@ -63,4 +67,6 @@ body {
     
     width: 186px;
     height: 87px;
+    
+    border-radius: 25px;
 }
