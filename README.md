@@ -1,5 +1,25 @@
 # calculator
 
+Wow! The final project in the The Odin Project 'Foundations' curriculum. This one was quite difficult, most notably because of figuring out how to program the logic. 
+
+How I approached programming the logic was oscillating between drawing flowcharts, programming, and testing. The flowcharts I draw (for [example]()) depict 'states' of the calculator as determined by the internal variable states, and arrows connecting them representing button presses from the user. I've probably drew at least five flowcharts throughout the course of this, incrementally refining them until it fully represented my calculator and was bug-free. 
+
+Drawing flowcharts was crucial in testing to make sure I had tested all major cases and edge cases. 
+
+Git branching proved to be useful again to help guide my development by enforcing what feature I was working on at any given time. The power of a good commit history also showed itself, when I was having trouble recalling why I made a certain change; [this commit message](https://github.com/Julia-1439/calculator/commit/c88202bf7f84f3796e8c75303a1a66b6acef7dc3) helped me understand why. 
+
+This project was also an exercise in patience and perseverance. I wasn't excited about every single part of this project, but that need not be true to be a developer. And when my code was buggy and I had to refactor my whole solution, I just had to take it one step at a time and not rush myself, as frustrated as I was. 
+
+Approximate Time spent: 
+- Logic: 16:20 hours
+- Styling: 5:30 hours
+- Total: 23:45 hours
+
+Extra Credit:
+1:55 and counting
+
+A considerable, but not overwhelming, amount of time was spent on ensuring my commits were modular and commit messages were quality. Using `git add --patch` for the former was very useful. 
+
 ## Definitions
 The following are terms we use in our commits and comments (starting in 
 commit afb25e1). Each `*` indicates an arbitrary operator. 
