@@ -45,6 +45,8 @@ body {
 
     font-family: inherit;
     font-size: 27px;
+    font-weight: bold;
+    color: darkslategrey;
     border-color: white;
     border-radius: 50%;
 }
