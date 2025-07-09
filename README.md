@@ -2,7 +2,7 @@
 
 Wow! The final project in the The Odin Project 'Foundations' curriculum. This one was quite difficult, most notably because of figuring out how to program the logic. 
 
-How I approached programming the logic was oscillating between drawing flowcharts, programming, and testing. The flowcharts I draw (for [example]()) depict 'states' of the calculator as determined by the internal variable states, and arrows connecting them representing button presses from the user. I've probably drew at least five flowcharts throughout the course of this, incrementally refining them until it fully represented my calculator and was bug-free. 
+How I approached programming the logic was oscillating between drawing flowcharts, programming, and testing. The flowcharts I draw (for [example](https://github.com/Julia-1439/calculator/blob/main/flow-chart.png)) depict 'states' of the calculator as determined by the internal variable states, and arrows connecting them representing button presses from the user. I've probably drew at least five flowcharts throughout the course of this, incrementally refining them until it fully represented my calculator and was bug-free. 
 
 Drawing flowcharts was crucial in testing to make sure I had tested all major cases and edge cases. 
 
