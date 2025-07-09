@@ -1,13 +1,13 @@
 #calc-container {
+    box-sizing: content-box;
     width: 384px;
-    height: 576px;
+    height: 582px;
     border: black solid 1px;
-    box-sizing: border-box;
+    padding: 12px;
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    /* gap: 12px; */
+    gap: 12px; 
 }
 
 #display {
@@ -16,10 +16,37 @@
 }
 
 .calc-button, .wide-calc-button {
-    flex: 25%;
-    box-sizing: border-box;
+    /* Calculation:  
+    freeSpaceIn4ButtonRow = contentWidthOfContainer - gapSize * numGaps
+                          = 384px - 12px * 3
+                          = 348px
+    calcButtonWidth = freeSpaceIn4ButtonRow / 4
+                    = 348px / 4
+                    = 87px
+    */
+
+    width: 87px;
+    height: 87px;
 }
 
 .wide-calc-button {
-    flex: 50%;
+    /* Calculation:  
+    A "wide" calculator button should take up as much horizontal space as two
+    regular buttons including their gap. Thus: 
+    wideCalcButtonWidth = calcButtonWidth * 2 + gapSize
+                       = 87px * 2 + 12px
+                       = 186px
+    The reason why we chose to not simply assign flex:50% to this class and 
+    flex:25% to .calc-button is that the total size of gaps in a row is not 
+    factored into the width calculation, but seems to only be applied after. 
+    One can see the effect of this by deleting the gap property, and then
+    setting these flex basis values - it behaves as intended until the gap
+    property is readded. 
+
+    If I find a better way to do this in the future (likely), then I might
+    revisit this and implement that!
+    */
+    
+    width: 186px;
+    height: 87px;
 }
