@@ -42,7 +42,9 @@ body {
     
     width: 87px;
     height: 87px;
+
     font-family: inherit;
+    font-size: 27px;
     border: none;
     border-radius: 50%;
 }
