@@ -8,34 +8,33 @@
 </head>
 <body>
     <script src="script.js" defer></script>
-    <div>
-        <button class="digit">1</button>
-        <button class="digit">2</button>
-        <button class="digit">3</button>
-        <button class="digit">4</button>
-        <button class="digit">5</button>
-        <button class="digit">6</button>
-        <button class="digit">7</button>
-        <button class="digit">8</button>
-        <button class="digit">9</button>
-        <button class="digit">0</button>
-    </div>
 
-    <div>
-        <button class="operator">+</button>
-        <button class="operator">-</button>
-        <button class="operator">×</button>
-        <button class="operator">÷</button>
-    </div>
+    <div id="calc-container">
 
-    <div>
-        <button id="equals">=</button>
-        <button id="clear-all">AC</button>
-    </div>
 
-    <div>
-        <button id="decimal">.</button>
-        <button id="backspace">←</button>
+        <button id="clear-all" class="calc-button wide-calc-button">AC</button>
+        <button id="backspace" class="calc-button">←</button>
+        <button class="calc-button operator">÷</button>
+
+        <button class="calc-button digit">7</button>
+        <button class="calc-button digit">8</button>
+        <button class="calc-button digit">9</button>
+        <button class="calc-button operator">×</button>
+
+        <button class="calc-button digit">4</button>
+        <button class="calc-button digit">5</button>
+        <button class="calc-button digit">6</button>
+        <button class="calc-button operator">-</button>
+
+        <button class="calc-button digit">1</button>
+        <button class="calc-button digit">2</button>
+        <button class="calc-button digit">3</button>
+        <button class="calc-button operator">+</button>
+
+        <button class="calc-button digit">0</button>
+        <button id="decimal" class="calc-button">.</button>
+        <button id="equals" class="calc-button wide-calc-button">=</button>
+
     </div>
 
     <div id="display"></div>

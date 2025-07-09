@@ -1,0 +1,24 @@
+#calc-container {
+    width: 384px;
+    height: 576px;
+    border: black solid 1px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* gap: 12px; */
+}
+
+#display {
+    flex: 100%;
+}
+
+.calc-button, .wide-calc-button {
+    flex: 25%;
+    box-sizing: border-box;
+}
+
+.wide-calc-button {
+    flex: 50%;
+}
