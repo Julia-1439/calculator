@@ -16,63 +16,75 @@ const display = document.querySelector("#display");
 clearButton.addEventListener("click", clearAll);
 
 digitButtons.forEach((button) => {
-    button.addEventListener("click", (e) => {
-        const digit = +e.target.textContent;
-        // The + here handles the 0-first case
-        const updatedNumber = +`${getCurrOperand() ?? ""}${digit}` 
-        
-        setCurrOperand(updatedNumber);
-        setDisplay(updatedNumber);
-        resultMode = false;
-    }); 
+    button.addEventListener("click", handleDigitActivation);
 });
 
 operatorButtons.forEach((button) => {
-    button.addEventListener("click", (e) => {
-        const pressedOperator = e.target.id; 
+    button.addEventListener("click", handleOperatorActivation);
+});
 
-        if (operandA !== undefined) {
-            if (operandB === undefined) {
-                // Equals Calculation. Also handles switching operator
-                operator = pressedOperator;
+equalsButton.addEventListener("click", handleEqualsActivation);
+
+/* Functions called directly by event handlers */
+
+function clearAll() {
+    operandA = operandB = operator = undefined;
+    setDisplay("");
+    resultMode = false;
+}
+
+function handleDigitActivation(evt) {
+    const digit = +evt.target.textContent;
+    // The + here handles the 0-first case
+    const updatedNumber = +`${getCurrOperand() ?? ""}${digit}` 
+    
+    setCurrOperand(updatedNumber);
+    setDisplay(updatedNumber);
+    resultMode = false;
+}
+
+function handleOperatorActivation(evt) {
+    const pressedOperator = evt.target.id; 
+
+    if (operandA !== undefined) {
+        if (operandB === undefined) {
+            // Equals Calculation. Also handles switching operator
+            operator = pressedOperator;
+        }
+        else {
+            // Running Calculation. 
+            const prevOperator = operator;
+
+            const intermediateResult = operate(operandA, operandB, prevOperator);
+            if (intermediateResult === ERR_MSG_DIV0) {
+                handleDiv0Error();
+                return;
             }
-            else {
-                // Running Calculation. 
-                const prevOperator = operator;
+            setDisplay(intermediateResult);
 
-                const intermediateResult = operate(operandA, operandB, prevOperator);
-                if (intermediateResult === ERR_MSG_DIV0) {
-                    handleDiv0Error();
-                    return;
-                }
-                setDisplay(intermediateResult);
-
-                operandA = intermediateResult;
-                operandB = undefined; 
-                operator = pressedOperator; 
+            operandA = intermediateResult;
+            operandB = undefined; 
+            operator = pressedOperator; 
+        }
+    }
+    else {
+        if (operandB === undefined) {
+            // Either initial state or a Handoff Calculation
+            
+            // Handoff Calculation
+            if (resultMode) {
+                operandA = displayContent; 
+                operator = pressedOperator;
+                resultMode = false;
             }
         }
         else {
-            if (operandB === undefined) {
-                // Either initial state or a Handoff Calculation
-                
-                // Handoff Calculation
-                if (resultMode) {
-                    operandA = displayContent; 
-                    operator = pressedOperator;
-                    resultMode = false;
-                }
-            }
-            else {
-                // Impossible (maybe)
-            }
+            // Impossible (maybe)
         }
-        
-    });
-});
+    }
+}
 
-equalsButton.addEventListener("click", (e) => {
-
+function handleEqualsActivation(evt) {
     // Equals button should only do something if both operands & the operator
     // are defined
     if (operandA === undefined 
@@ -89,14 +101,6 @@ equalsButton.addEventListener("click", (e) => {
     setDisplay(result);
     resultMode = true;    
     operandA = operandB = operator = undefined;
-});
-
-/* Functions called directly by event handlers */
-
-function clearAll() {
-    operandA = operandB = operator = undefined;
-    setDisplay("");
-    resultMode = false;
 }
 
 /* Helper functions */
