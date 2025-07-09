@@ -1,4 +1,5 @@
 # calculator
+<img src="./calculator.png" alt="The calculator" width="200px"/>
 
 Wow! The final project in the The Odin Project 'Foundations' curriculum. This one was quite difficult, most notably because of figuring out how to program the logic. 
 
