@@ -10,6 +10,7 @@ body {
     border: black solid 1px;
     padding: 24px;
     border-radius: 25px;
+    background-color: #FFA5B7;
 
     display: flex;
     flex-wrap: wrap;
@@ -23,6 +24,7 @@ body {
     border: black solid 1px;
     padding: 6px;
     border-radius: 25px;
+    background-color: white;
 
     display: flex;
     justify-content: right;
@@ -43,7 +45,6 @@ body {
     width: 87px;
     height: 87px;
     font-family: inherit;
-
     border-radius: 50%;
 }
 
@@ -68,4 +69,13 @@ body {
     width: 186px;
     
     border-radius: 25px;
+    background-color: white;
+}
+
+.digit, #decimal {
+    background-color: #FFD8DF;
+}
+
+.operator, #backspace {
+    background-color: #99EEFF;
 }
