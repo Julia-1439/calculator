@@ -4,6 +4,15 @@ let displayContent = "";
 let resultMode = false;
 const ERR_MSG_DIV0 = "ERROR-DIV-0";
 const DECIMALS_LIMIT = 3;
+const DISPLAY_LEN_LIMIT = Number.MAX_SAFE_INTEGER.toString().length - 1; // 15
+// This limit is to prevent the user entering unsafe large numbers, since
+// a user unaware of the MAX_SAFE_INTEGER limit might find it confusing if 
+// their input starts changing (try console logging 9999999999999999, which is
+// 9 repeated 16 times). 
+// Additionally, any computation containing numbers exceeding 15 digits, that 
+// is, potentially unsafe numbers, are rounded to exponential notation in 
+// accordance with DECIMALS_LIMIT to prevent unexpected results from being 
+// displayed. 
 
 /* Global variables for DOM elements to add event listeners to */
 const digitButtons = document.querySelectorAll(".digit");
@@ -34,12 +43,19 @@ function clearAll() {
 }
 
 function handleDigitActivation(evt) {
-    const digit = +evt.target.textContent;
-    // The + here handles the 0-first case
-    const updatedNumber = +`${getCurrOperand() ?? ""}${digit}` 
+    const currOperand = getCurrOperand() ?? "";
+
+    if (currOperand.toString().length === DISPLAY_LEN_LIMIT) {
+        return; 
+    }
     
-    setCurrOperand(updatedNumber);
-    setDisplay(updatedNumber);
+    const digit = +evt.target.textContent;
+    // The + here handles entering 0 first followed by a nonzero digit d: 
+    // + converts it to only "d" instead of "0d".  
+    const updatedOperand = +`${currOperand}${digit}`;
+
+    setCurrOperand(updatedOperand);
+    setDisplay(updatedOperand);
     resultMode = false;
 }
 
@@ -142,6 +158,8 @@ function divide(p, q) {
 
 function operate(a, b, operator) {
     let result;
+    a = +a;
+    b = +b;
     
     switch (operator) {
         case "add": 
@@ -161,14 +179,13 @@ function operate(a, b, operator) {
     if (result === ERR_MSG_DIV0){
         return result; 
     }
-    else if (result.toString().includes("e+")) {
-        result = +result.toPrecision(DECIMALS_LIMIT + 1); 
-        // The + trims trailing 0s
-        // +1 is added to DECIMALS_LIMIT since toPrecision() accepts # of 
-        // significant figures rather than decimal places like toFixed()
+    else if (result.toString().length > DISPLAY_LEN_LIMIT 
+        || result.toString().includes("e+")) {
+        result = result.toExponential(DECIMALS_LIMIT)
     }
     else {
-        result = +result.toFixed(DECIMALS_LIMIT); // The + trims trailing 0s
+        // The + trims trailing 0s after the decimal point
+        result = +result.toFixed(DECIMALS_LIMIT); 
     }
     
     return result;
