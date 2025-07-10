@@ -3,7 +3,7 @@ let operandA, operandB, operator;
 let displayContent = "";
 let resultMode = false;
 const ERR_MSG_DIV0 = "ERROR-DIV-0";
-const DECIMALS_LIMIT = 3;
+const DECIMAL_PLACES_LIMIT = 3;
 const DISPLAY_LEN_LIMIT = Number.MAX_SAFE_INTEGER.toString().length - 1; // 15
 // This limit is to prevent the user entering unsafe large numbers, since
 // a user unaware of the MAX_SAFE_INTEGER limit might find it confusing if 
@@ -11,7 +11,7 @@ const DISPLAY_LEN_LIMIT = Number.MAX_SAFE_INTEGER.toString().length - 1; // 15
 // 9 repeated 16 times). 
 // Additionally, any computation containing numbers exceeding 15 digits, that 
 // is, potentially unsafe numbers, are rounded to exponential notation in 
-// accordance with DECIMALS_LIMIT to prevent unexpected results from being 
+// accordance with DECIMAL_PLACES_LIMIT to prevent unexpected results from being 
 // displayed. 
 
 /* Global variables for DOM elements to add event listeners to */
@@ -181,11 +181,11 @@ function operate(a, b, operator) {
     }
     else if (result.toString().length > DISPLAY_LEN_LIMIT 
         || result.toString().includes("e+")) {
-        result = result.toExponential(DECIMALS_LIMIT)
+        result = result.toExponential(DECIMAL_PLACES_LIMIT)
     }
     else {
         // The + trims trailing 0s after the decimal point
-        result = +result.toFixed(DECIMALS_LIMIT); 
+        result = +result.toFixed(DECIMAL_PLACES_LIMIT); 
     }
     
     return result;
