@@ -35,3 +35,5 @@ These are helpful threads I consulted for help over the course of developing thi
 * [StackOverflow: Two ways to round a number in JS and cases of error due to float imprecision:](https://stackoverflow.com/a/12830454/22151685) 
 
 * [StackOverflow: Buttons & Inheritance](https://stackoverflow.com/questions/76109685/why-do-input-and-button-not-inherit-in-css)
+
+* [StackOverflow: Adding multiple event listeners](https://stackoverflow.com/questions/58127282/how-we-can-add-two-event-listeners-click-and-keydown-in-javascript)
