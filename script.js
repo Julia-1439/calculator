@@ -13,6 +13,12 @@ const DISPLAY_LEN_LIMIT = Number.MAX_SAFE_INTEGER.toString().length - 1; // 15
 // is, potentially unsafe numbers, are rounded to exponential notation in 
 // accordance with DECIMAL_PLACES_LIMIT to prevent unexpected results from being 
 // displayed. 
+const OPERATOR_IDS = {
+    "+": "add",
+    "-": "subtract",
+    "*": "multiply",
+    "/": "divide"
+}
 
 /* Global variables for DOM elements to add event listeners to */
 const digitButtons = document.querySelectorAll(".digit");
@@ -33,6 +39,8 @@ operatorButtons.forEach((button) => {
 });
 
 equalsButton.addEventListener("click", handleEqualsActivation);
+
+window.addEventListener("keydown", handleKeydown);
 
 /* Functions called directly by event handlers */
 
@@ -100,7 +108,7 @@ function handleOperatorActivation(evt) {
     }
 }
 
-function handleEqualsActivation(evt) {
+function handleEqualsActivation() {
     // Equals button should only do something if both operands & the operator
     // are defined
     if (operandA === undefined 
@@ -117,6 +125,38 @@ function handleEqualsActivation(evt) {
     setDisplay(result);
     resultMode = true;    
     operandA = operandB = operator = undefined;
+}
+
+function handleKeydown(evt) {
+    const keyPressed = evt.key;
+    
+    if (isNaN(keyPressed)) {
+        switch (keyPressed) {
+            case ".": 
+                break; // TODO
+            case "+": 
+            case "-":
+            case "*": 
+            case "/": 
+                const operatorId = OPERATOR_IDS[keyPressed];
+                const dummyEvt = {target: {id: operatorId}};
+                handleOperatorActivation(dummyEvt);
+                break;
+            case "=":
+                handleEqualsActivation();
+                break;
+            case "c":
+                clearAll();
+                break;
+            case "Backspace":
+            case "Delete": 
+                break; // TODO
+        }
+    }
+    else {
+        const dummyEvt = {target: {textContent: +keyPressed}};
+        handleDigitActivation(dummyEvt);
+    }
 }
 
 /* Helper functions */
