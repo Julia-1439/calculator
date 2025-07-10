@@ -1,7 +1,9 @@
 # calculator
 <img src="./calculator.png" alt="The calculator" width="200px"/>
 
-The final project in the The Odin Project 'Foundations' curriculum! This one exercised almost all major concepts I had learned up to this point in HTML, CSS, and Javascript. This one was quite difficult, most notably because of figuring out how to program the logic for the calculator and testing it comprehensively. 
+The final project in the The Odin Project 'Foundations' curriculum! This one exercised almost all major concepts I had learned up to this point in HTML, CSS, and Javascript. This one was quite difficult, most notably because of figuring out how to program the logic for the calculator and testing it comprehensively.
+
+Not yet done: implementing a length limit when entering digits. And the extra credit features. 
 
 How I approached programming the logic was oscillating between drawing flowcharts, programming, and testing. The flowcharts I draw (for [example](https://github.com/Julia-1439/calculator/blob/main/flow-chart.png)) depict 'states' of the calculator as determined by the internal variables' values, and arrows connecting them representing button presses from the user. I've probably drew at least five flowcharts throughout the course of this, incrementally refining them until it fully represented my calculator and was bug-free. 
 
