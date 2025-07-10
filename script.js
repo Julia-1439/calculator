@@ -1,7 +1,7 @@
 /* Global variables to store operation info */
 let operandA, operandB, operator;
 let displayContent = "";
-let resultMode = false;
+let resultMode = false; // Only used in the 'Handoff Calculation' case
 const ERR_MSG_DIV0 = "ERROR-DIV-0";
 const DECIMAL_PLACES_LIMIT = 3;
 const DISPLAY_LEN_LIMIT = Number.MAX_SAFE_INTEGER.toString().length - 1; // 15
