@@ -25,10 +25,13 @@ const digitButtons = document.querySelectorAll(".digit");
 const operatorButtons = document.querySelectorAll(".operator");
 const equalsButton = document.querySelector("#equals"); 
 const clearButton = document.querySelector("#clear-all");
+const backspaceButton = document.querySelector("#backspace");
 const display = document.querySelector("#display");
 
 /* Add event listeners to buttons and page */
 clearButton.addEventListener("click", clearAll);
+
+backspaceButton.addEventListener("click", backspace);
 
 digitButtons.forEach((button) => {
     button.addEventListener("click", handleDigitActivation);
@@ -48,6 +51,21 @@ function clearAll() {
     operandA = operandB = operator = undefined;
     setDisplay("");
     resultMode = false;
+}
+
+// Backspace only supports deleting user-input digits, *not* results: 
+// (1) user should start a new query if they wish to use a truncation of result
+// (2) results in exponential notation would be unwieldy to make compatible
+function backspace() {
+    const currOperand = getCurrOperand();
+
+    if (currOperand === undefined) {
+        return;
+    }
+
+    const revisedOperand = +(currOperand.toString().slice(0, -1)) || undefined;
+    setCurrOperand(revisedOperand);
+    setDisplay(revisedOperand);
 }
 
 function handleDigitActivation(evt) {
