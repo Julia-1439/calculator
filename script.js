@@ -167,8 +167,9 @@ function handleKeydown(evt) {
                 clearAll();
                 break;
             case "Backspace":
-            case "Delete": 
-                break; // TODO
+            case "Delete":
+                backspace(); 
+                break; 
         }
     }
     else {
