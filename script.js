@@ -75,10 +75,8 @@ function handleDigitActivation(evt) {
         return; 
     }
     
-    const digit = +evt.target.textContent;
-    // The + here handles entering 0 first followed by a nonzero digit d: 
-    // + converts it to only "d" instead of "0d".  
-    const updatedOperand = +`${currOperand}${digit}`;
+    const digit = evt.target.textContent;
+    const updatedOperand = `${currOperand === "0" ? "" : currOperand}${digit}`;
 
     setCurrOperand(updatedOperand);
     setDisplay(updatedOperand);
