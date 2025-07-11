@@ -3,9 +3,9 @@
 
 A 4-function calculator - The final project in the The Odin Project 'Foundations' curriculum! 
 
-<b>Functionality</b>: Supports doing math with the 4 basic operations, Floating point numbers are supported to 3 decimal places. There is keyboard support, a backspace button, and a Clear All button. 
+<strong>Functionality</strong>: Supports doing math with the 4 basic operations, Floating point numbers are supported to 3 decimal places. There is keyboard support, a backspace button, and a Clear All button. 
 
-<b>Caveats</b>: Does not support arbitrary precision arithmetic; might behave oddly at numbers at and around the ± safe integer limits. Does not support entering negative numbers directly, though they still can be generated. 
+<strong>Caveats</strong>: Does not support arbitrary precision arithmetic; might behave oddly at numbers at and around the ± safe integer limits. Does not support entering negative numbers directly, though they still can be generated. 
 
 ## Reflection
 This one exercised almost all major concepts I had learned up to this point in HTML, CSS, and Javascript. This one was quite difficult, most notably because of figuring out how to program the logic for the calculator and testing it comprehensively.
@@ -22,7 +22,7 @@ Approximate Time Spent:
 - Logic: 19:05 hours
 - Styling: 5:35 hours
 - Extra Credit: 7:20 hours
-- <b>Total</b>: 32:00 hours
+- <strong>Total</strong>: 32:00 hours
 
 A lot of time was spent on ensuring my commits were modular and commit messages & explanations were quality. Using `git add --patch` for the former was very useful. Perhaps I spent too much time on this, but I feel I will get better with time deciding what to commit and what not to. 
 
@@ -31,9 +31,9 @@ Overall, I am really happy with how this turned out! The finished product is inc
 ## Definitions
 The following are terms we use in our commits and comments (starting in 
 commit afb25e1). Each `*` indicates an arbitrary operator. 
-* <b>Equals Calculation</b>: a user input sequence of the form `A * B =`
-* <b>Running Calculation</b>: a user input sequence of the form `A * B *` 
-* <b>Handoff Calculation</b>: a user input sequence of the form `A * B = *` 
+* <strong>Equals Calculation</strong>: a user input sequence of the form `A * B =`
+* <strong>Running Calculation</strong>: a user input sequence of the form `A * B *` 
+* <strong>Handoff Calculation</strong>: a user input sequence of the form `A * B = *` 
 * `resultMode` variable: This variable is set to true only when the = button is pressed and is used only to handle the Handoff Calculation case. Note: this variable might not be needed if there's some synonymous boolean that that can be constructed. 
 * Current Operand: either `operandA` or `operandB`; the operand to be updated when the user presses a digit. 
 
