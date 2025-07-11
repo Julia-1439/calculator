@@ -27,7 +27,7 @@ body {
     display: flex;
     justify-content: right;
     align-items: center;
-    font-size: 36px;
+    font-size: 31px;
 }
 
 .calc-button, .wide-calc-button {
