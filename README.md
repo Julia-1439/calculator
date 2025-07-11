@@ -26,6 +26,8 @@ Approximate Time Spent:
 
 A lot of time was spent on ensuring my commits were modular and commit messages & explanations were quality. Using `git add --patch` for the former was very useful. Perhaps I spent too much time on this, but I feel I will get better with time deciding what to commit and what not to. 
 
+Overall, I am really happy with how this turned out! The finished product is incredibly gratifying to look at and play with. All the planning, research, testing, bug-fixing, and perseverence paid off, and I'm addicted ;)
+
 ## Definitions
 The following are terms we use in our commits and comments (starting in 
 commit afb25e1). Each `*` indicates an arbitrary operator. 
