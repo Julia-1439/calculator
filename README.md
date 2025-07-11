@@ -10,8 +10,6 @@ A 4-function calculator - The final project in the The Odin Project 'Foundations
 ## Reflection
 This one exercised almost all major concepts I had learned up to this point in HTML, CSS, and Javascript. This one was quite difficult, most notably because of figuring out how to program the logic for the calculator and testing it comprehensively.
 
-Not yet done: The extra credit features. 
-
 How I approached programming the logic was oscillating between drawing flowcharts, programming, and testing. The flowcharts I draw (for [example](https://github.com/Julia-1439/calculator/blob/main/flow-chart.png)) depict 'states' of the calculator as determined by the internal variables' values, and arrows connecting them representing button presses from the user. I've probably drew at least five flowcharts throughout the course of this, incrementally refining them until it fully represented my calculator and was bug-free. 
 
 Drawing flowcharts was crucial in testing to make sure the calculator behaved correctly in all major cases and edge cases. 
