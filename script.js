@@ -4,7 +4,7 @@ let displayContent = "";
 let resultMode = false; // Only used in the 'Handoff Calculation' case
 const ERR_MSG_DIV0 = "ERROR-DIV-0";
 const DECIMAL_PLACES_LIMIT = 3;
-const DISPLAY_LEN_LIMIT = Number.MAX_SAFE_INTEGER.toString().length - 1; // 15
+const NUM_DIGITS_LIMIT = Number.MAX_SAFE_INTEGER.toString().length - 1; // 15
 // This limit is to prevent the user entering unsafe large numbers, since
 // a user unaware of the MAX_SAFE_INTEGER limit might find it confusing if 
 // their input starts changing (try console logging 9999999999999999, which is
@@ -236,7 +236,7 @@ function operate(a, b, operator) {
     if (result === ERR_MSG_DIV0){
         return result; 
     }
-    else if (result.toString().length > DISPLAY_LEN_LIMIT 
+    else if (result.toString().length > NUM_DIGITS_LIMIT 
         || result.toString().includes("e+")) {
         result = result.toExponential(DECIMAL_PLACES_LIMIT)
     }
