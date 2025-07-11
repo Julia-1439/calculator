@@ -1,7 +1,12 @@
 # calculator
 <img src="./calculator.png" alt="The calculator" width="200px"/>
 
-The final project in the The Odin Project 'Foundations' curriculum! This one exercised almost all major concepts I had learned up to this point in HTML, CSS, and Javascript. This one was quite difficult, most notably because of figuring out how to program the logic for the calculator and testing it comprehensively.
+A 4-function calculator - The final project in the The Odin Project 'Foundations' curriculum! 
+
+Supports the 4 basic math operations and floating point numbers. 
+
+## Reflection
+This one exercised almost all major concepts I had learned up to this point in HTML, CSS, and Javascript. This one was quite difficult, most notably because of figuring out how to program the logic for the calculator and testing it comprehensively.
 
 Not yet done: The extra credit features. 
 
