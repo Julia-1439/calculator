@@ -257,12 +257,19 @@ function operate(a, b, operator) {
     if (result === ERR_MSG_DIV0){
         return result; 
     }
-    else if (result.toString().length > NUM_DIGITS_LIMIT 
-        || result.toString().includes("e+")) {
-        result = result.toExponential(DECIMAL_PLACES_LIMIT)
+    else if (result.toString().includes("e+")) {
+        result = result.toExponential(DECIMAL_PLACES_LIMIT);       
+    }
+    else if (Math.trunc(result).toString().length > NUM_DIGITS_LIMIT) { 
+        result = result.toExponential(DECIMAL_PLACES_LIMIT);
+        // Any large integer result (one exceeding the 15 digit length limit) is 
+        // written in exponential notation. The integer function is needed 
+        // because without, non-large results with high float precision such as
+        // 3.33333333333333 would be written as "3.333+e0" rather than the 
+        // desired 3.333. 
     }
     else {
-        // The + trims trailing 0s after the decimal point
+        // The + trims any trailing 0s after the decimal point
         result = +result.toFixed(DECIMAL_PLACES_LIMIT); 
     }
     
