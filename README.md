@@ -13,11 +13,11 @@ Git branching proved to be useful again to help guide my development by enforcin
 
 This project was also an exercise in patience and perseverance. I wasn't excited about every single part of this project, but that need not be true to be a developer. And when my code was buggy and I had to refactor my whole solution, I just had to take it one step at a time and not rush myself, as frustrated as I was. 
 
-Approximate Time spent: 
+Approximate Time Spent: 
 - Logic: 19:05 hours
 - Styling: 5:30 hours
 - Total: 24:35 hours
-- Extra Credit: 1:55 hours and counting
+- Extra Credit: 5:10 hours and counting
 
 A considerable, but not overwhelming, amount of time was spent on ensuring my commits were modular and commit messages were quality. Using `git add --patch` for the former was very useful. 
 
