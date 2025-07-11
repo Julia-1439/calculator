@@ -3,9 +3,9 @@
 
 A 4-function calculator - The final project in the The Odin Project 'Foundations' curriculum! 
 
-<b>Functionality</b>: Supports the 4 basic math operations and floating point numbers. 
+<b>Functionality</b>: Supports doing math with the 4 basic operations, Floating point numbers are supported to 3 decimal places. There is keyboard support, a backspace button, and a Clear All button. 
 
-<b>Caveats</b>: Does not support arbitrary precision arithmetic; might behave oddly at numbers at and around the safe integer limits of `-(2^53 - 1)` to `2^53-1`. Results are rounded to at most 3 decimal places. Does not support entering negative numbers directly, though they still can be generated. 
+<b>Caveats</b>: Does not support arbitrary precision arithmetic; might behave oddly at numbers at and around the ± safe integer limits. Does not support entering negative numbers directly, though they still can be generated. 
 
 ## Reflection
 This one exercised almost all major concepts I had learned up to this point in HTML, CSS, and Javascript. This one was quite difficult, most notably because of figuring out how to program the logic for the calculator and testing it comprehensively.
