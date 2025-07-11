@@ -63,7 +63,7 @@ function backspace() {
         return;
     }
 
-    const revisedOperand = +(currOperand.toString().slice(0, -1)) || undefined;
+    const revisedOperand = currOperand.slice(0, -1) || undefined;
     setCurrOperand(revisedOperand);
     setDisplay(revisedOperand);
 }
