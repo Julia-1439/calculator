@@ -34,7 +34,7 @@ commit afb25e1). Each `*` indicates an arbitrary operator.
 * <b>Equals Calculation</b>: a user input sequence of the form `A * B =`
 * <b>Running Calculation</b>: a user input sequence of the form `A * B *` 
 * <b>Handoff Calculation</b>: a user input sequence of the form `A * B = *` 
-* `resultMode` variable: This variable is set to true only when the = button is pressed and is used only in the Handoff Calculation case. 
+* `resultMode` variable: This variable is set to true only when the = button is pressed and is used only to handle the Handoff Calculation case. Note: this variable might not be needed if there's some synonymous boolean that that can be constructed. 
 * Current Operand: either `operandA` or `operandB`; the operand to be updated when the user presses a digit. 
 
 ## Sources of Help
