@@ -19,8 +19,10 @@ const OPERATOR_IDS = {
     "*": "multiply",
     "/": "divide"
 }
+const DECIMAL = ".";
 
 /* Global variables for DOM elements to add event listeners to */
+const decimalButton = document.querySelector("#decimal");
 const digitButtons = document.querySelectorAll(".digit");
 const operatorButtons = document.querySelectorAll(".operator");
 const equalsButton = document.querySelector("#equals"); 
@@ -32,6 +34,8 @@ const display = document.querySelector("#display");
 clearButton.addEventListener("click", clearAll);
 
 backspaceButton.addEventListener("click", backspace);
+
+decimalButton.addEventListener("click", handleDecimalActivation);
 
 digitButtons.forEach((button) => {
     button.addEventListener("click", handleDigitActivation);
@@ -68,10 +72,26 @@ function backspace() {
     setDisplay(revisedOperand);
 }
 
+function handleDecimalActivation() {
+    const currOperand = getCurrOperand() ?? "";
+
+    if (currOperand.includes(DECIMAL)) {
+        return;
+    }
+
+    const updatedOperand = (currOperand === "") 
+        ? `0${DECIMAL}` 
+        : `${currOperand}${DECIMAL}`;
+    
+    setCurrOperand(updatedOperand);
+    setDisplay(updatedOperand);
+    resultMode = false;
+}
+
 function handleDigitActivation(evt) {
     const currOperand = getCurrOperand() ?? "";
 
-    if (currOperand.toString().length === DISPLAY_LEN_LIMIT) {
+    if (currOperand.replace(DECIMAL, "").length === NUM_DIGITS_LIMIT) {
         return; 
     }
     
@@ -149,7 +169,8 @@ function handleKeydown(evt) {
     if (isNaN(keyPressed)) {
         switch (keyPressed) {
             case ".": 
-                break; // TODO
+                handleDecimalActivation();
+                break; 
             case "+": 
             case "-":
             case "*": 
