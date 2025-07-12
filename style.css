@@ -25,6 +25,7 @@ body {
     border-radius: 25px;
     border: solid #F2F2F2 8px; 
     background-color: white;
+    color: cornflowerblue;
 
     display: flex;
     justify-content: right;
