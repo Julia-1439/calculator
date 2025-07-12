@@ -8,6 +8,8 @@ body {
     height: 582px;
     padding: 24px;
     border-radius: 10px;
+    border-left: solid #FFD8DF 8px; 
+    border-right: solid #FFD8DF 8px; 
     background-color: pink;
 
     display: flex;
@@ -21,6 +23,7 @@ body {
     height: 87px;
     padding: 12px;
     border-radius: 25px;
+    border: solid #F2F2F2 8px; 
     background-color: white;
 
     display: flex;
