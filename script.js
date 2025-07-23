@@ -1,8 +1,8 @@
 /* Global variables to store operation info */
 let operandA, operandB, operator;
 let displayContent = "";
-let resultMode = false; 
-// resultMode is only set to true when Equals is pressed. This flag is only used
+let equalsMode = false; 
+// equalsMode is only set to true when Equals is pressed. This flag is only used
 // in the 'Handoff Calculation' case - see README for definition.
 const ERR_MSG_DIV0 = "ERROR-DIV-0";
 const DECIMAL_PLACES_LIMIT = 3;
@@ -46,7 +46,7 @@ window.addEventListener("keydown", handleKeydown);
 function clearAll() {
     operandA = operandB = operator = undefined;
     setDisplay("");
-    resultMode = false;
+    equalsMode = false;
 }
 
 // Backspace only supports deleting user-input digits, *not* results since:
@@ -79,7 +79,7 @@ function handleDecimalActivation() {
     
     setCurrOperand(updatedOperand);
     setDisplay(updatedOperand);
-    resultMode = false;
+    equalsMode = false;
 }
 
 function handleDigitActivation(evt) {
@@ -96,7 +96,7 @@ function handleDigitActivation(evt) {
 
     setCurrOperand(updatedOperand);
     setDisplay(updatedOperand);
-    resultMode = false;
+    equalsMode = false;
 }
 
 // See README for definitions of the cases handled in this function
@@ -128,10 +128,10 @@ function handleOperatorActivation(evt) {
     else {
         if (operandB === undefined) {
             // Handles the 'Handoff Calculation' case
-            if (resultMode) {
+            if (equalsMode) {
                 operandA = displayContent; 
                 operator = pressedOperator;
-                resultMode = false;
+                equalsMode = false;
             }
 
             // The initial state of the calculator reaches here 
@@ -158,7 +158,7 @@ function handleEqualsActivation() {
         return;
     }
     setDisplay(result);
-    resultMode = true;    
+    equalsMode = true;    
     operandA = operandB = operator = undefined;
 }
 
