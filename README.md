@@ -22,8 +22,8 @@ Approximate Time Spent:
 - Logic: 19:05 hours
 - Styling: 5:45 hours
 - Extra Credit: 7:20 hours
-- Clean Up: 1:30 hours
-- <strong>Total</strong>: 33:40 hours
+- Clean Up: 1:50 hours
+- <strong>Total</strong>: 34:00 hours
 
 A lot of time was spent on ensuring my commits were modular and commit messages & explanations were quality. Using `git add --patch` for the former was very useful. Perhaps I spent too much time on this, but I feel I will get better with time deciding what to commit and what not to. 
 
