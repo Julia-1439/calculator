@@ -2,8 +2,10 @@
 let operandA, operandB, operator;
 let displayContent = "";
 let equalsMode = false; 
-// equalsMode is only set to true when Equals is pressed. This flag is only used
-// in the 'Handoff Calculation' case - see README for definition.
+// This flag is only used in the 'Handoff Calculation' case - see README for 
+// definition.
+
+/* Global constants */
 const ERR_MSG_DIV0 = "ERROR-DIV-0";
 const DECIMAL_PLACES_LIMIT = 3;
 const DECIMAL = ".";
@@ -42,7 +44,6 @@ window.addEventListener("keydown", handleKeydown);
 
 
 /* Functions called directly by event handlers */
-
 function clearAll() {
     operandA = operandB = operator = undefined;
     setDisplay("");
@@ -104,13 +105,14 @@ function handleOperatorActivation(evt) {
     const pressedOperator = evt.target.id; 
 
     if (operandA !== undefined) {
+
+        // Handles the 'Equals Calculation' case and switching operators
         if (operandB === undefined) {
-            // This block handles the 'Equals Calculation' case and 
-            // switching operators
             operator = pressedOperator;
         }
+
+        // Handles the 'Running Calculation' case.  
         else {
-            // Handles the 'Running Calculation' case.  
             const prevOperator = operator;
 
             const intermediateResult = operate(operandA, operandB, prevOperator);
@@ -126,20 +128,14 @@ function handleOperatorActivation(evt) {
         }
     }
     else {
-        if (operandB === undefined) {
-            // Handles the 'Handoff Calculation' case
-            if (equalsMode) {
-                operandA = displayContent; 
-                operator = pressedOperator;
-                equalsMode = false;
-            }
-
-            // The initial state of the calculator reaches here 
-            // (nothing happens)
+        // Handles the 'Handoff Calculation' case. 
+        if (equalsMode) {
+            operandA = displayContent; 
+            operator = pressedOperator;
+            equalsMode = false;
         }
-        else {
-            // Impossible (maybe)
-        }
+        
+        // Initial state of the calculator also reaches here (nothing happens)
     }
 }
 
