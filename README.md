@@ -46,3 +46,5 @@ These are helpful threads I consulted for help over the course of developing thi
 * [StackOverflow: Adding multiple event listeners](https://stackoverflow.com/questions/58127282/how-we-can-add-two-event-listeners-click-and-keydown-in-javascript)
 
 * [MDN: Max Safe Integer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER) 
+
+* [StackOverflow: Conditioanlly initializing a constant in Javascript](https://stackoverflow.com/questions/38765194/conditionally-initializing-a-constant-in-javascript)
