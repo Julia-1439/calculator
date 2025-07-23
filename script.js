@@ -32,22 +32,17 @@ const display = document.querySelector("#display");
 
 /* Add event listeners to buttons and page */
 clearButton.addEventListener("click", clearAll);
-
 backspaceButton.addEventListener("click", backspace);
-
 decimalButton.addEventListener("click", handleDecimalActivation);
-
 digitButtons.forEach((button) => {
     button.addEventListener("click", handleDigitActivation);
 });
-
 operatorButtons.forEach((button) => {
     button.addEventListener("click", handleOperatorActivation);
 });
-
 equalsButton.addEventListener("click", handleEqualsActivation);
-
 window.addEventListener("keydown", handleKeydown);
+
 
 /* Functions called directly by event handlers */
 
@@ -212,12 +207,12 @@ function getCurrOperand() {
     return (operator === undefined) ? operandA : operandB; 
 }
 
-function setCurrOperand(newNumber) {
+function setCurrOperand(newOperand) {
     if (operator === undefined) {
-        operandA = newNumber;
+        operandA = newOperand;
     }
     else {
-        operandB = newNumber;
+        operandB = newOperand;
     }
 }
 
