@@ -73,13 +73,15 @@ function backspace() {
 }
 
 function handleDecimalActivation() {
-    const currOperand = getCurrOperand();
+    const currOperand = getCurrOperand() ?? "";
+    // if currOperand is undefined, it is treated as a string "" be consistent
+    // with how handleDigitActivation() is implemented
 
-    if (currOperand !== undefined && currOperand.includes(DECIMAL)) {
+    if (currOperand.includes(DECIMAL)) {
         return;
     }
 
-    const updatedOperand = (currOperand === undefined) 
+    const updatedOperand = (currOperand === "") 
         ? `0${DECIMAL}` 
         : `${currOperand}${DECIMAL}`;
     
@@ -89,7 +91,9 @@ function handleDecimalActivation() {
 }
 
 function handleDigitActivation(evt) {
-    const currOperand = getCurrOperand() ?? "";
+    const currOperand = getCurrOperand() ?? ""; 
+    // if currOperand is undefined, it is treated as a string "" so the 
+    // conditional checks in this function apply more cleanly
 
     if (currOperand.replace(DECIMAL, "").length === NUM_DIGITS_LIMIT) {
         return; 
