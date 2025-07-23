@@ -1,25 +1,22 @@
 /* Global variables to store operation info */
 let operandA, operandB, operator;
 let displayContent = "";
-let resultMode = false; // Only used in the 'Handoff Calculation' case
+let resultMode = false; 
+// resultMode is only set to true when Equals is pressed. This flag is only used
+// in the 'Handoff Calculation' case - see README for definition.
 const ERR_MSG_DIV0 = "ERROR-DIV-0";
 const DECIMAL_PLACES_LIMIT = 3;
+const DECIMAL = ".";
 const NUM_DIGITS_LIMIT = Number.MAX_SAFE_INTEGER.toString().length - 1; // 15
-// This limit is to prevent the user entering unsafe large numbers, since
-// a user unaware of the MAX_SAFE_INTEGER limit might find it confusing if 
-// their input starts changing (try console logging 9999999999999999, which is
-// 9 repeated 16 times). 
-// Additionally, any computation containing numbers exceeding 15 digits, that 
-// is, potentially unsafe numbers, are rounded to exponential notation in 
-// accordance with DECIMAL_PLACES_LIMIT to prevent unexpected results from being 
-// displayed. 
+// This limit is to prevent the user from entering unsafe large numbers. 
+// Any *result* containing numbers exceeding 15 digits are rounded to 
+// exponential notation to prevent unexpected results from being displayed. 
 const OPERATOR_IDS = {
     "+": "add",
     "-": "subtract",
     "*": "multiply",
     "/": "divide"
-}
-const DECIMAL = ".";
+}; // Utilized in detecting keyboard input for operators
 
 /* Global variables for DOM elements to add event listeners to */
 const decimalButton = document.querySelector("#decimal");
@@ -52,7 +49,7 @@ function clearAll() {
     resultMode = false;
 }
 
-// Backspace only supports deleting user-input digits, *not* results: 
+// Backspace only supports deleting user-input digits, *not* results since:
 // (1) user should start a new query if they wish to use a truncation of result
 // (2) results in exponential notation would be unwieldy to make compatible
 function backspace() {
@@ -70,7 +67,7 @@ function backspace() {
 function handleDecimalActivation() {
     const currOperand = getCurrOperand() ?? "";
     // if currOperand is undefined, it is treated as a string "" be consistent
-    // with how handleDigitActivation() is implemented
+    // with how handleDigitActivation() handles undefined values.
 
     if (currOperand.includes(DECIMAL)) {
         return;
@@ -102,16 +99,18 @@ function handleDigitActivation(evt) {
     resultMode = false;
 }
 
+// See README for definitions of the cases handled in this function
 function handleOperatorActivation(evt) {
     const pressedOperator = evt.target.id; 
 
     if (operandA !== undefined) {
         if (operandB === undefined) {
-            // Equals Calculation. Also handles switching operator
+            // This block handles the 'Equals Calculation' case and 
+            // switching operators
             operator = pressedOperator;
         }
         else {
-            // Running Calculation. 
+            // Handles the 'Running Calculation' case.  
             const prevOperator = operator;
 
             const intermediateResult = operate(operandA, operandB, prevOperator);
@@ -128,14 +127,15 @@ function handleOperatorActivation(evt) {
     }
     else {
         if (operandB === undefined) {
-            // Either initial state or a Handoff Calculation
-            
-            // Handoff Calculation
+            // Handles the 'Handoff Calculation' case
             if (resultMode) {
                 operandA = displayContent; 
                 operator = pressedOperator;
                 resultMode = false;
             }
+
+            // The initial state of the calculator reaches here 
+            // (nothing happens)
         }
         else {
             // Impossible (maybe)
@@ -256,20 +256,20 @@ function operate(a, b, operator) {
     if (result === ERR_MSG_DIV0){
         return result; 
     }
+    // Perform rounding
     else if (result.toString().includes("e+")) {
         result = result.toExponential(DECIMAL_PLACES_LIMIT);       
     }
     else if (Math.trunc(result).toString().length > NUM_DIGITS_LIMIT) { 
         result = result.toExponential(DECIMAL_PLACES_LIMIT);
-        // Any large integer result (one exceeding the 15 digit length limit) is 
-        // written in exponential notation. The integer function is needed 
-        // because without, non-large results with high float precision such as
-        // 3.33333333333333 would be written as "3.333+e0" rather than the 
-        // desired 3.333. 
+        // Any result with large integer part (one exceeding the 15 digit length
+        // limit) is written in exponential notation to prevent the result
+        // overflowing the display or showing precision errors
     }
     else {
-        // The + trims any trailing 0s after the decimal point
         result = +result.toFixed(DECIMAL_PLACES_LIMIT); 
+        // Rounding a standard number
+        // (the + trims any trailing 0s after the decimal point)
     }
     
     return result;
