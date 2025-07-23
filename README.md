@@ -28,6 +28,13 @@ A lot of time was spent on ensuring my commits were modular and commit messages 
 
 Overall, I am really happy with how this turned out! The finished product is incredibly gratifying to look at and play with. All the planning, research, testing, bug-fixing, and perseverence paid off, and I'm addicted ;)
 
+### Post-Project Questions
+These are my questions after completing the project. Perhaps I'll have answers to these as my knowledge increases! 
+1. How else can I implement keyboard input? As it is, I create "dummy" click events when a key is pressed which feels hacky, so I wonder if there is a better way. 
+2. Is there a way to achieve my current calculator layout without specifying the pixel dimensions of the buttons explicitly? Perhaps using calc(). 
+3. How would I revise the styling to use border-box for the calculator instead of the current content-box? 
+4. How is the readability and structure of the Javascript code? 
+
 ## Definitions
 The following are terms we use in our commits and comments (starting in 
 commit afb25e1). Each `*` indicates an arbitrary operator. 
