@@ -86,7 +86,7 @@ function handleDecimalActivation() {
 function handleDigitActivation(evt) {
     const currOperand = getCurrOperand() ?? ""; 
     // if currOperand is undefined, it is treated as a string "" so the 
-    // conditional checks in this function apply more cleanly
+    // following conditionals apply more cleanly 
 
     if (currOperand.replace(DECIMAL, "").length === NUM_DIGITS_LIMIT) {
         return; 
@@ -135,7 +135,7 @@ function handleOperatorActivation(evt) {
             equalsMode = false;
         }
         
-        // Initial state of the calculator also reaches here (nothing happens)
+        // Initial state of the calculator reaches here (nothing happens)
     }
 }
 
@@ -252,7 +252,6 @@ function operate(a, b, operator) {
     if (result === ERR_MSG_DIV0){
         return result; 
     }
-    // Perform rounding
     else if (result.toString().includes("e+")) {
         result = result.toExponential(DECIMAL_PLACES_LIMIT);       
     }
