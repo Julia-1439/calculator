@@ -73,13 +73,13 @@ function backspace() {
 }
 
 function handleDecimalActivation() {
-    const currOperand = getCurrOperand() ?? "";
+    const currOperand = getCurrOperand();
 
-    if (currOperand.includes(DECIMAL)) {
+    if (currOperand !== undefined && currOperand.includes(DECIMAL)) {
         return;
     }
 
-    const updatedOperand = (currOperand === "") 
+    const updatedOperand = (currOperand === undefined) 
         ? `0${DECIMAL}` 
         : `${currOperand}${DECIMAL}`;
     
