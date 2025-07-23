@@ -1,5 +1,5 @@
 # calculator
-<img src="/images/calculator.png" alt="The calculator" width="200px"/>
+<img src="./images/calculator.png" alt="The calculator" width="200px"/>
 
 A 4-function calculator - The final project in the The Odin Project 'Foundations' curriculum! 
 
