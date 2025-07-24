@@ -31,7 +31,7 @@ Overall, I am really happy with how this turned out! The finished product is inc
 
 ### Post-Project Questions
 These are my questions after completing the project. Perhaps I'll have answers to these as my knowledge increases! 
-1. How else can I implement keyboard input? As it is, I create "dummy" click events when a key is pressed which feels hacky, so I wonder if there is a better way. 
+1. How else can I implement keyboard input? As it is, I create "dummy" click events when a key is pressed which feels hacky, so I wonder if there is a better way. Perhaps you can change the arguments of the event handlers to not take an event but rather its key, then call the handlers from a wrapper function from both the keydown and click events. 
 2. Is there a way to achieve my current calculator layout without specifying the pixel dimensions of the buttons explicitly? Perhaps using calc(). 
 3. How would I revise the styling to use border-box for the calculator instead of the current content-box? 
 4. How is the readability and structure of the Javascript code? 
